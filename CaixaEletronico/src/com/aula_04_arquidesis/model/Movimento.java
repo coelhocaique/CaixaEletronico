@@ -1,7 +1,6 @@
 package com.aula_04_arquidesis.model;
 
 import java.util.Date;
-import java.util.List;
 
 import com.aula_04_arquidesis.dao.MovimentoDao;
 

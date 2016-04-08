@@ -4,7 +4,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html xmlns="http://www.w3.org/1999/xhtml" style="">
 
 <head>
 <title>Consultar Extrato</title>
@@ -25,10 +26,45 @@
 	function quinzeDias(){
 		document.location.href = "${pageContext.request.contextPath}/extrato?periodo=15";
 	}
+	
+	
 </script>
+
+<script type="text/javascript">
+        var records = "${movimentos}";
+        var recordsPerPage = 10;
+        var pages = Math.ceil(records / recordsPerPage);
+        $('.sync-pagination').twbsPagination({
+            totalPages : pages,
+            visiblePages : 7,
+            onPageClick : function(event, page) {
+                $('#products').html(changePage(page));
+            }
+        });
+
+        function changePage(page) {
+            pnumber = page || 1;
+
+            $.ajax({
+                type : 'GET',
+                dataType : 'json',
+                url : 'extrato/movimentos?pagina=' + pnumber,
+                success : function(products) {
+                    var template = $('#products-template').html();
+                    var info = Mustache.render(template, products);
+                    $('#products').html(info);
+                }
+            })
+        }
+  
+        //Add this in here
+        changePage();
+    </script>
 </head>
 
 <body>
+
+
 
 	<div class="container">
 
@@ -82,12 +118,12 @@
 
 			<div align="center">
 
-				<ul class="pagination"">
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
+				<ul class="pagination">
+					<li><a href="#" onclick="changePage()">1</a></li>
+					<li><a href="#" onclick="changePage()">2</a></li>
+					<li><a href="#" onclick="changePage()">3</a></li>
+					<li><a href="#" onclick="changePage()">4</a></li>
+					<li><a href="#" onclick="changePage()">5</a></li>
 				</ul>
 			</div>
 
@@ -100,6 +136,6 @@
 			</a>
 		</div>
 	</div>
-	>
+	
 </body>
 </html>

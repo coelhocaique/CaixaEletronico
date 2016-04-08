@@ -10,6 +10,8 @@
 <title>Menu de opções</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href='<html:rewrite page="/css/login.css"/>' rel="stylesheet"
+	type="text/css" />
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
 <script
@@ -28,7 +30,7 @@
 </script>
 </head>
 
-<body>
+<body class="body">
 	<div class="list-group" align="center">
 
 		<c:if test="${sucesso }">
@@ -52,30 +54,22 @@
 					<h1 align="center">Clique no botão desejado para realizar a
 						operação</h1>
 				</div>
-				
+
 				<div class="panel-footer" align="center">
 					<button type="button" class="btn btn-default btn-lg"
-					onclick="extrato()">Extrato</button>
+						onclick="extrato()">Extrato</button>
 					<button type="button" class="btn btn-default btn-lg"
-					onclick="saque()">Saque</button>
-					<button type="button" class="btn btn-default btn-lg"
-					onclick="logout()">Sair</button>
+						onclick="saque()">Saque</button>
 				</div>
+				<div class="panel-footer" align="center">
+					<button type="button" class="btn btn-default btn-lg"
+						onclick="logout()">Sair</button>
+				</div>
+
+
 			</div>
 		</div>
-		
-		
-
-<!-- 		<div class="container"> -->
-<!-- 			<h2 align="center">Clique no botão desejado para realizar a -->
-<!-- 				operação</h2> -->
-<!-- 			<div class="form-group" align="center"> -->
-<!-- 				<button type="button" class="btn btn-default btn-lg" -->
-<!-- 					onclick="extrato()">Extrato</button> -->
-<!-- 				<button type="button" class="btn btn-default btn-lg" -->
-<!-- 					onclick="saque()">Saque</button> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
 	</div>
+
 </body>
 </html>
